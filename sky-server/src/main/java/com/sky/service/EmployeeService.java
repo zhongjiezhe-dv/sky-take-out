@@ -1,5 +1,6 @@
 package com.sky.service;
 
+import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.entity.Employee;
 
@@ -12,4 +13,11 @@ public interface EmployeeService {
      */
     Employee login(EmployeeLoginDTO employeeLoginDTO);
 
+    /**
+     *
+     * @author zyb
+     * @date 2023/8/23 19:09
+     * @param employeeDTO
+     */
+    void save(EmployeeDTO employeeDTO);
 }
