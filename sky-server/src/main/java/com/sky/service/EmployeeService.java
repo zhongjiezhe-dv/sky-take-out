@@ -41,4 +41,20 @@ public interface EmployeeService {
      */
     void startOrStop(Integer status, Long id);
 
+    /**
+     *
+     * @author zyb
+     * @date 2023/8/28 16:14
+     * @param id
+     * @return Employee
+     */
+    Employee getById(Long id);
+
+    /**
+     *
+     * @author zyb
+     * @date 2023/8/28 16:20
+     * @param employeeDTO
+     */
+    void update(EmployeeDTO employeeDTO);
 }

@@ -101,6 +101,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     /**
      * 分页查询员工
+     *
      * @param employeePageQueryDTO
      * @return PageResult
      * @author zyb
@@ -114,15 +115,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         long total = page.getTotal();
         List<Employee> pageResult = page.getResult();
-        return new PageResult(total,pageResult);
+        return new PageResult(total, pageResult);
     }
 
     /**
-     *
-     * @author zyb
-     * @date 2023/8/28 15:40
      * @param status
      * @param id
+     * @author zyb
+     * @date 2023/8/28 15:40
      */
     @Override
     public void startOrStop(Integer status, Long id) {
@@ -130,6 +130,36 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .id(id)
                 .status(status)
                 .build();
+        employeeMapper.update(employee);
+    }
+
+    /**
+     * @param id
+     * @return Employee
+     * @author zyb
+     * @date 2023/8/28 16:14
+     */
+    @Override
+    public Employee getById(Long id) {
+        Employee employee = employeeMapper.getById(id);
+        employee.setPassword("******");
+        return employee;
+    }
+
+    /**
+     * 编辑员工信息
+     * @author zyb
+     * @date 2023/8/28 16:21
+     * @param employeeDTO
+     */
+    @Override
+    public void update(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO,employee);
+
+        employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(BaseContext.getCurrentId());
+
         employeeMapper.update(employee);
     }
 
