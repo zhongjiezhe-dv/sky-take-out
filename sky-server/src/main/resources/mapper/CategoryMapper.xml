@@ -19,20 +19,10 @@
         select * from category
         <where>
             <if test="name!=null and name!=''">
-                and name like contact('%',#{name},'%')
+                and name like concat('%',#{name},'%')
             </if>
             <if test="type!=null">and type = #{type}</if>
         </where>
         order by sort asc,create_time desc
-    </select>
-    <select id="list" resultType="com.sky.entity.Category">
-        select * from category
-                 <where>
-                     status=1 and
-                    <if test="type!=null">type=#{type}</if>
-                    or
-                    <if test="name!=null">name like concat('%',#{name},'%')</if>
-                 </where>
-                 order by sort asc,create_time desc
     </select>
 </mapper>
