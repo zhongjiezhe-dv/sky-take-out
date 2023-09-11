@@ -47,6 +47,5 @@ public interface CategoryMapper {
     @AutoFill(value = OperationType.UPDATE)
     void update(Category category);
 
-    @Select("select * from category where status=1 and type=#{type} order by sort asc,create_time desc")
     List<Category> list(Integer type);
 }

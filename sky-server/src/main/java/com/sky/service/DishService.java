@@ -3,6 +3,7 @@ package com.sky.service;
 import com.sky.annotation.AutoFill;
 import com.sky.dto.DishDTO;
 import com.sky.dto.DishPageQueryDTO;
+import com.sky.entity.Dish;
 import com.sky.enumeration.OperationType;
 import com.sky.result.PageResult;
 import com.sky.vo.DishVO;
@@ -52,4 +53,13 @@ public interface DishService {
     void updateWithFlavor(DishDTO dishDTO);
 
     void startOrStop(Integer status, Long id);
+
+    /**
+     * 条件查询菜品和口味
+     * @author zyb
+     * @date 2023/9/11 21:03
+     * @param dish
+     * @return List<DishVO>
+     */
+    List<DishVO> listWithFlavor(Dish dish);
 }
