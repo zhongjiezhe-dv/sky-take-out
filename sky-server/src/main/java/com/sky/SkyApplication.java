@@ -5,9 +5,11 @@ import org.apache.commons.codec.digest.Md5Crypt;
 import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
+@EnableCaching//开启缓存注解功能
 @EnableTransactionManagement //开启注解方式的事务管理
 @Slf4j
 public class SkyApplication {
